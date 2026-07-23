@@ -1,0 +1,22 @@
+# Flutter / Dart
+.dart_tool/
+.packages
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+*.iml
+
+# FVM (mantém o .fvmrc versionado, ignora o SDK baixado)
+.fvm/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+
+# Temporários da entrega (Cowork) — pode remover
+_to_delete/
+_stage/
+_*.zip

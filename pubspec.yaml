@@ -1,0 +1,62 @@
+name: portfolio
+description: "Portfolio pessoal de Gabrielle Soratto - Software Developer (Mobile & Backend)."
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+  flutter: ">=3.19.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Localizacoes do Material/Cupertino (pt-BR e en-US) — necessario para
+  # widgets como Drawer/Scaffold resolverem MaterialLocalizations.
+  flutter_localizations:
+    sdk: flutter
+
+  # Gerenciamento de estado, injecao de dependencias, rotas e i18n.
+  get: ^4.6.6
+
+  # Abrir links externos (GitHub, LinkedIn, e-mail, WhatsApp, deploys).
+  url_launcher: ^6.3.1
+
+  # Icones de contato/redes (GitHub, LinkedIn, WhatsApp, App Store).
+  font_awesome_flutter: ^10.7.0
+
+  # Logos de marca das tecnologias (Simple Icons em SVG).
+  flutter_svg: ^2.0.10
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/cv/
+    - assets/icons/
+
+  fonts:
+    - family: Asap
+      fonts:
+        - asset: assets/fonts/Asap-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Asap-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Asap-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Asap-Bold.ttf
+          weight: 700
+    - family: Inconsolata
+      fonts:
+        - asset: assets/fonts/Inconsolata-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Inconsolata-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Inconsolata-SemiBold.ttf
+          weight: 600
