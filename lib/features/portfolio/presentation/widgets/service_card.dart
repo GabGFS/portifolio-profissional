@@ -45,7 +45,7 @@ class ServiceCard extends StatelessWidget {
           decoration: BoxDecoration(
             color: AppColors.surface,
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: hovering ? accent.withOpacity(0.6) : AppColors.border),
+            border: Border.all(color: hovering ? accent.withValues(alpha: 0.6) : AppColors.border),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,9 +54,9 @@ class ServiceCard extends StatelessWidget {
                 width: 52,
                 height: 52,
                 decoration: BoxDecoration(
-                  color: accent.withOpacity(0.14),
+                  color: accent.withValues(alpha: 0.14),
                   borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: accent.withOpacity(0.35)),
+                  border: Border.all(color: accent.withValues(alpha: 0.35)),
                 ),
                 child: Center(
                   child: FaIcon(PortfolioVisuals.serviceIcon(service.type), size: 20, color: accent),

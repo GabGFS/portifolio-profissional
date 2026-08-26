@@ -125,7 +125,7 @@ class _BackToTopFab extends StatelessWidget {
                     shape: BoxShape.circle,
                     boxShadow: <BoxShadow>[
                       BoxShadow(
-                        color: AppColors.purple.withOpacity(0.45),
+                        color: AppColors.purple.withValues(alpha: 0.45),
                         blurRadius: 20,
                         offset: const Offset(0, 8),
                       ),

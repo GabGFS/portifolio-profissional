@@ -53,5 +53,5 @@ class AppColors {
   );
 
   /// Cor translucida (para nav pill e overlays).
-  static Color glass(double opacity) => gray600.withOpacity(opacity);
+  static Color glass(double opacity) => gray600.withValues(alpha: opacity);
 }

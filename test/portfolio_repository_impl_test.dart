@@ -4,8 +4,8 @@ import 'package:portfolio/features/portfolio/data/repositories/portfolio_reposit
 import 'package:portfolio/features/portfolio/domain/entities/project.dart';
 
 void main() {
-  final PortfolioRepositoryImpl repository =
-      PortfolioRepositoryImpl(const PortfolioLocalDataSourceImpl());
+  const PortfolioRepositoryImpl repository =
+      PortfolioRepositoryImpl(PortfolioLocalDataSourceImpl());
 
   group('PortfolioRepositoryImpl', () {
     test('expoe os 8 projetos do portfolio', () async {

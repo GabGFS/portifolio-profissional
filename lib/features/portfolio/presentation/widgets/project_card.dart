@@ -49,13 +49,13 @@ class ProjectCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
               color: hovering
-                  ? accent.withOpacity(0.7)
-                  : (project.featured ? accent.withOpacity(0.4) : AppColors.border),
+                  ? accent.withValues(alpha: 0.7)
+                  : (project.featured ? accent.withValues(alpha: 0.4) : AppColors.border),
             ),
             boxShadow: hovering
                 ? <BoxShadow>[
                     BoxShadow(
-                      color: accent.withOpacity(0.16),
+                      color: accent.withValues(alpha: 0.16),
                       blurRadius: 26,
                       offset: const Offset(0, 14),
                     ),
@@ -108,7 +108,7 @@ class ProjectCard extends StatelessWidget {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: <Color>[
-                    accent.withOpacity(0.28),
+                    accent.withValues(alpha: 0.28),
                     AppColors.surface,
                   ],
                   begin: Alignment.topLeft,
@@ -140,7 +140,7 @@ class ProjectCard extends StatelessWidget {
                   width: 46,
                   height: 46,
                   decoration: BoxDecoration(
-                    color: AppColors.background.withOpacity(0.55),
+                    color: AppColors.background.withValues(alpha: 0.55),
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(color: AppColors.border),
                   ),
@@ -166,9 +166,9 @@ class ProjectCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
-        color: AppColors.background.withOpacity(0.6),
+        color: AppColors.background.withValues(alpha: 0.6),
         borderRadius: BorderRadius.circular(999),
-        border: Border.all(color: accent.withOpacity(0.5)),
+        border: Border.all(color: accent.withValues(alpha: 0.5)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,

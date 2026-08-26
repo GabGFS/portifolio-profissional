@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/constants/app_constants.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_typography.dart';
 import '../../../../core/utils/responsive.dart';
@@ -115,7 +114,7 @@ class _Avatar extends StatelessWidget {
               ),
               boxShadow: <BoxShadow>[
                 BoxShadow(
-                  color: AppColors.purple.withOpacity(0.28),
+                  color: AppColors.purple.withValues(alpha: 0.28),
                   blurRadius: 40,
                   spreadRadius: 2,
                 ),

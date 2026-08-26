@@ -100,7 +100,7 @@ class _ContactRow extends StatelessWidget {
             decoration: BoxDecoration(
               color: hovering ? AppColors.surfaceHover : AppColors.surface,
               borderRadius: BorderRadius.circular(14),
-              border: Border.all(color: hovering ? accent.withOpacity(0.6) : AppColors.border),
+              border: Border.all(color: hovering ? accent.withValues(alpha: 0.6) : AppColors.border),
             ),
             child: Row(
               children: <Widget>[

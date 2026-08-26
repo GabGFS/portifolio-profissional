@@ -24,18 +24,17 @@ class InitialBinding extends Bindings {
     Get.put<AppLauncher>(const UrlAppLauncher(), permanent: true);
 
     // Data + dominio.
-    final PortfolioLocalDataSource dataSource =
-        const PortfolioLocalDataSourceImpl();
-    final PortfolioRepository repository = PortfolioRepositoryImpl(dataSource);
+    const PortfolioLocalDataSource dataSource = PortfolioLocalDataSourceImpl();
+    const PortfolioRepository repository = PortfolioRepositoryImpl(dataSource);
 
     // ViewModel com casos de uso injetados.
     Get.put<PortfolioController>(
       PortfolioController(
-        getProfile: GetProfile(repository),
-        getProjects: GetProjects(repository),
-        getSkillGroups: GetSkillGroups(repository),
-        getServices: GetServices(repository),
-        getSocialLinks: GetSocialLinks(repository),
+        getProfile: const GetProfile(repository),
+        getProjects: const GetProjects(repository),
+        getSkillGroups: const GetSkillGroups(repository),
+        getServices: const GetServices(repository),
+        getSocialLinks: const GetSocialLinks(repository),
         launcher: Get.find<AppLauncher>(),
       ),
     );
