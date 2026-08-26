@@ -93,7 +93,7 @@ class _Avatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const double size = 140;
+    const double size = 160;
     return SizedBox(
       width: size + 12,
       height: size + 12,

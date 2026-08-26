@@ -23,7 +23,7 @@ class AppConstants {
   // Assets
   // Troque assets/images/profile.png pela sua foto (mantendo o nome).
   // O layout ja enquadra a imagem (BoxFit.cover) — nao precisa recortar.
-  static const String profileImage = 'assets/images/2.png';
+  static const String profileImage = 'assets/images/perfil.webp';
   static const String cvPtAsset = 'assets/cv/GabrielleSoratto_CV_PT.pdf';
   static const String cvEnAsset = 'assets/cv/GabrielleSoratto_CV_EN.pdf';
 
