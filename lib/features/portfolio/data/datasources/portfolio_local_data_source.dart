@@ -59,7 +59,8 @@ class PortfolioLocalDataSourceImpl implements PortfolioLocalDataSource {
         en: 'Software Developer · Mobile & Backend',
       ),
       tagline: LocalizedText(
-        pt: 'Transformo ideias em aplicações reais — do mobile ao backend — '
+        pt: 'Transformo ideias em aplicações reais, desde a criação do escopo '
+          'até a publicação, '
             'com arquitetura limpa, testes e foco em qualidade.',
         en: 'I turn ideas into real applications — from mobile to backend — '
             'with clean architecture, testing and a focus on quality.',

@@ -11,7 +11,7 @@ import '../widgets/reveal_on_scroll.dart';
 import '../widgets/section_header.dart';
 import '../widgets/section_wrapper.dart';
 
-/// Secao "Sobre mim": bio centrada + numeros de destaque.
+/// Secao "Sobre mim": bio justificada em bloco central + numeros de destaque.
 class AboutSection extends StatelessWidget {
   const AboutSection({super.key});
 
@@ -44,9 +44,14 @@ class AboutSection extends StatelessWidget {
             child: ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 760),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   for (final LocalizedBio b in _bio(profile, lang)) ...<Widget>[
-                    Text(b.text, textAlign: TextAlign.center, style: AppText.bodyLarge),
+                    Text(
+                      b.text,
+                      textAlign: TextAlign.justify,
+                      style: AppText.bodyLarge,
+                    ),
                     if (!b.last) const SizedBox(height: 16),
                   ],
                   const SizedBox(height: 22),
@@ -59,10 +64,13 @@ class AboutSection extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 24),
-                  GhostButton(
-                    label: 'hero.ctaCv'.tr,
-                    icon: FontAwesomeIcons.download,
-                    onTap: c.downloadCv,
+                  Align(
+                    alignment: Alignment.center,
+                    child: GhostButton(
+                      label: 'hero.ctaCv'.tr,
+                      icon: FontAwesomeIcons.download,
+                      onTap: c.downloadCv,
+                    ),
                   ),
                 ],
               ),
