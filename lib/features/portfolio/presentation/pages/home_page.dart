@@ -81,16 +81,16 @@ class _ScrollContent extends StatelessWidget {
               child: const AboutSection(),
             ),
             KeyedSubtree(
-              key: controller.sectionKeys[PortfolioSection.skills],
-              child: const SkillsSection(),
-            ),
-            KeyedSubtree(
               key: controller.sectionKeys[PortfolioSection.projects],
               child: const ProjectsSection(),
             ),
             KeyedSubtree(
               key: controller.sectionKeys[PortfolioSection.services],
               child: const ServicesSection(),
+            ),
+            KeyedSubtree(
+              key: controller.sectionKeys[PortfolioSection.skills],
+              child: const SkillsSection(),
             ),
             KeyedSubtree(
               key: controller.sectionKeys[PortfolioSection.contact],

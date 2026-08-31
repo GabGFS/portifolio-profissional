@@ -39,8 +39,8 @@ class ContactSection extends StatelessWidget {
         children: <Widget>[
           const RevealOnScroll(
             child: SectionHeader(
+              center: false,
               kickerKey: 'contact.kicker',
-              titleKey: 'contact.title',
               subtitleKey: 'contact.subtitle',
               accent: AppColors.purple,
             ),

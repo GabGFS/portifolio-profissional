@@ -17,7 +17,7 @@ import '../../domain/usecases/get_skill_groups.dart';
 import '../../domain/usecases/get_social_links.dart';
 
 /// Secoes navegaveis da pagina (ancoras de rolagem).
-enum PortfolioSection { home, about, skills, projects, services, contact }
+enum PortfolioSection { home, about, projects, services, skills, contact }
 
 /// ViewModel da tela de portfolio (camada de apresentacao).
 ///

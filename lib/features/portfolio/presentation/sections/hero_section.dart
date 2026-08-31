@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/theme/app_colors.dart';
@@ -7,7 +6,6 @@ import '../../../../core/theme/app_typography.dart';
 import '../../../../core/utils/responsive.dart';
 import '../../domain/entities/developer_profile.dart';
 import '../controllers/portfolio_controller.dart';
-import '../widgets/app_buttons.dart';
 import 'nav_bar.dart';
 
 /// Hero centralizado (avatar + intro monospace + nome + curriculo).
@@ -72,12 +70,6 @@ class HeroSection extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: AppText.bodyLarge,
                   ),
-                ),
-                const SizedBox(height: 32),
-                GhostButton(
-                  label: 'hero.ctaCv'.tr,
-                  icon: FontAwesomeIcons.download,
-                  onTap: c.downloadCv,
                 ),
               ],
             ),

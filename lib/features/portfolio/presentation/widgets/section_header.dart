@@ -3,12 +3,13 @@ import 'package:get/get.dart';
 
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../../../core/utils/responsive.dart';
 
-/// Cabecalho de secao centralizado: kicker monospace colorido + titulo Asap.
+/// Cabecalho de secao: kicker monospace colorido e, quando houver, subtitulo.
+///
+/// Com [center] falso o bloco ocupa a largura toda, para que o texto encoste
+/// de fato na margem esquerda em vez de ficar centralizado como um bloco.
 class SectionHeader extends StatelessWidget {
   final String kickerKey;
-  final String titleKey;
   final String? subtitleKey;
   final Color accent;
   final bool center;
@@ -16,7 +17,6 @@ class SectionHeader extends StatelessWidget {
   const SectionHeader({
     super.key,
     required this.kickerKey,
-    required this.titleKey,
     this.subtitleKey,
     this.accent = AppColors.primary,
     this.center = true,
@@ -27,30 +27,26 @@ class SectionHeader extends StatelessWidget {
     final CrossAxisAlignment cross =
         center ? CrossAxisAlignment.center : CrossAxisAlignment.start;
     final TextAlign textAlign = center ? TextAlign.center : TextAlign.start;
-    final double titleSize =
-        Responsive.value<double>(context, mobile: 24, desktop: 30);
-
-    return Column(
-      crossAxisAlignment: cross,
-      children: <Widget>[
-        Text(kickerKey.tr,
-            style: AppText.kicker.copyWith(color: accent),
-            textAlign: textAlign),
-        const SizedBox(height: 10),
-        Text(
-          titleKey.tr,
-          textAlign: textAlign,
-          style: AppText.h2.copyWith(fontSize: titleSize),
-        ),
-        if (subtitleKey != null) ...<Widget>[
-          const SizedBox(height: 14),
-          ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 620),
-            child: Text(subtitleKey!.tr,
-                textAlign: textAlign, style: AppText.body),
-          ),
+    return SizedBox(
+      width: center ? null : double.infinity,
+      child: Column(
+        crossAxisAlignment: cross,
+        children: <Widget>[
+          Text(kickerKey.tr,
+              // Dobro do tamanho base do kicker (16): aqui ele e o unico
+              // titulo da secao, entao carrega sozinho a hierarquia.
+              style: AppText.kicker.copyWith(color: accent, fontSize: 32),
+              textAlign: textAlign),
+          if (subtitleKey != null) ...<Widget>[
+            const SizedBox(height: 10),
+            ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 620),
+              child: Text(subtitleKey!.tr,
+                  textAlign: textAlign, style: AppText.body),
+            ),
+          ],
         ],
-      ],
+      ),
     );
   }
 }

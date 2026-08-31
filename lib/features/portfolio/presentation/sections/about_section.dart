@@ -10,6 +10,7 @@ import '../widgets/app_buttons.dart';
 import '../widgets/reveal_on_scroll.dart';
 import '../widgets/section_header.dart';
 import '../widgets/section_wrapper.dart';
+import '../widgets/uniform_grid.dart';
 
 /// Secao "Sobre mim": bio justificada em bloco central + numeros de destaque.
 class AboutSection extends StatelessWidget {
@@ -35,8 +36,8 @@ class AboutSection extends StatelessWidget {
         children: <Widget>[
           const RevealOnScroll(
             child: SectionHeader(
+              center: false,
               kickerKey: 'about.kicker',
-              titleKey: 'about.title',
               accent: AppColors.blue,
             ),
           ),
@@ -49,8 +50,15 @@ class AboutSection extends StatelessWidget {
                 children: <Widget>[
                   for (final _LocalizedBio b
                       in _bio(profile, lang)) ...<Widget>[
-                    Text(
-                      b.text,
+                    // O Flutter nao tem text-indent: o recuo da primeira linha
+                    // vem de um espacador inline antes do texto.
+                    Text.rich(
+                      TextSpan(
+                        children: <InlineSpan>[
+                          const WidgetSpan(child: SizedBox(width: 34)),
+                          TextSpan(text: b.text),
+                        ],
+                      ),
                       textAlign: TextAlign.justify,
                       style: AppText.bodyLarge,
                     ),
@@ -94,28 +102,15 @@ class AboutSection extends StatelessWidget {
   }
 
   Widget _stats(DeveloperProfile profile, String lang) {
-    return LayoutBuilder(
-      builder: (BuildContext context, BoxConstraints constraints) {
-        const double gap = 16;
-        final int cols = constraints.maxWidth >= 760 ? 4 : 2;
-        final double width = (constraints.maxWidth - gap * (cols - 1)) / cols;
-        return Wrap(
-          spacing: gap,
-          runSpacing: gap,
-          alignment: WrapAlignment.center,
-          children: <Widget>[
-            for (int i = 0; i < profile.highlights.length; i++)
-              SizedBox(
-                width: width,
-                child: _StatCard(
-                  value: profile.highlights[i].value,
-                  label: profile.highlights[i].label.resolve(lang),
-                  accent: _accents[i % _accents.length],
-                ),
-              ),
-          ],
-        );
-      },
+    return UniformGrid(
+      itemCount: profile.highlights.length,
+      gap: 16,
+      columnsFor: (double maxWidth) => maxWidth >= 760 ? 4 : 2,
+      itemBuilder: (int index, int columns) => _StatCard(
+        value: profile.highlights[index].value,
+        label: profile.highlights[index].label.resolve(lang),
+        accent: _accents[index % _accents.length],
+      ),
     );
   }
 }

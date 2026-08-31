@@ -3,7 +3,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../core/theme/app_colors.dart';
 import '../../domain/entities/project.dart';
-import '../../domain/entities/project.dart' show ProjectLinkType;
 import '../../domain/entities/service_offering.dart';
 import '../../domain/entities/skill_group.dart';
 import '../../domain/entities/social_link.dart';

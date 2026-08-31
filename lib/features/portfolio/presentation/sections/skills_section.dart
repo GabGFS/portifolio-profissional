@@ -11,7 +11,8 @@ import '../widgets/section_header.dart';
 import '../widgets/section_wrapper.dart';
 import '../widgets/tech_chip.dart';
 
-/// Stacks como nuvem de chips (com logos de marca), agrupadas por area.
+/// Stacks como nuvem de chips (com logos de marca), agrupadas por area,
+/// tudo alinhado a esquerda.
 class SkillsSection extends StatelessWidget {
   const SkillsSection({super.key});
 
@@ -22,12 +23,12 @@ class SkillsSection extends StatelessWidget {
 
     return SectionWrapper(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           const RevealOnScroll(
             child: SectionHeader(
+              center: false,
               kickerKey: 'skills.kicker',
-              titleKey: 'skills.title',
               subtitleKey: 'skills.subtitle',
               accent: AppColors.green,
             ),
@@ -38,6 +39,7 @@ class SkillsSection extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 30),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
                       group.title.resolve(lang),
@@ -48,7 +50,7 @@ class SkillsSection extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                     Wrap(
-                      alignment: WrapAlignment.center,
+                      alignment: WrapAlignment.start,
                       spacing: 10,
                       runSpacing: 10,
                       children:

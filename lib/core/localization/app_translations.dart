@@ -23,17 +23,14 @@ class AppTranslations extends Translations {
 
     // Sobre
     'about.kicker': 'Sobre mim',
-    'about.title': 'Do mobile ao backend, com arquitetura limpa',
 
     // Skills
     'skills.kicker': 'Stacks',
-    'skills.title': 'Tecnologias que eu uso',
     'skills.subtitle':
         'Foco em Flutter e backend, com base sólida em arquitetura e testes.',
 
     // Projetos
     'projects.kicker': 'Meu trabalho',
-    'projects.title': 'Veja os projetos em destaque',
     'projects.subtitle':
         'Uma seleção de projetos que desenvolvi de ponta a ponta.',
     'projects.featured': 'Destaque',
@@ -53,11 +50,9 @@ class AppTranslations extends Translations {
 
     // Servicos
     'services.kicker': 'Serviços',
-    'services.title': 'Meus serviços',
 
     // Contato
     'contact.kicker': 'Contato',
-    'contact.title': 'Gostou do meu trabalho?',
     'contact.subtitle':
         'Entre em contato ou acompanhe as minhas redes sociais!',
 
@@ -80,17 +75,14 @@ class AppTranslations extends Translations {
 
     // About
     'about.kicker': 'About me',
-    'about.title': 'From mobile to backend, with clean architecture',
 
     // Skills
     'skills.kicker': 'Stack',
-    'skills.title': 'Technologies I work with',
     'skills.subtitle':
         'Focused on Flutter and backend, grounded in architecture and testing.',
 
     // Projects
     'projects.kicker': 'My work',
-    'projects.title': 'Featured projects',
     'projects.subtitle': 'A selection of projects I built end-to-end.',
     'projects.featured': 'Featured',
     'action.code': 'Code',
@@ -109,11 +101,9 @@ class AppTranslations extends Translations {
 
     // Services
     'services.kicker': 'Services',
-    'services.title': 'My services',
 
     // Contact
     'contact.kicker': 'Contact',
-    'contact.title': 'Liked my work?',
     'contact.subtitle': 'Get in touch or follow me on social media!',
 
     // Footer

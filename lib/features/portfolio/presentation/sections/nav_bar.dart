@@ -16,9 +16,9 @@ import '../widgets/language_toggle.dart';
 const List<(String, PortfolioSection)> kNavItems = <(String, PortfolioSection)>[
   ('nav.home', PortfolioSection.home),
   ('nav.about', PortfolioSection.about),
-  ('nav.skills', PortfolioSection.skills),
   ('nav.projects', PortfolioSection.projects),
   ('nav.services', PortfolioSection.services),
+  ('nav.skills', PortfolioSection.skills),
   ('nav.contact', PortfolioSection.contact),
 ];
 

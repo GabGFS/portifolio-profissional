@@ -72,28 +72,22 @@ class PortfolioLocalDataSourceImpl implements PortfolioLocalDataSource {
         LocalizedText(
           pt: 'Sou desenvolvedora de software com foco em mobile (Flutter) e '
               'backend (Kotlin/Java com Spring Boot, Node.js e .NET). Publiquei '
-              'dois '
-              'apps na Apple App Store com arquitetura distribuída e '
-              'monitoramento de métricas de produto.',
+              'dois apps na Apple App Store com arquitetura distribuída e '
+              'monitoramento de métricas de produto. Tenho muita experiência, '
+              'diversos sites e apps publicados e em funcionamento. Além de '
+              'background em Psicologia e Gestão de Pessoas, o que me dá uma '
+              'visão de produto centrada no usuário. Estruturo cada projeto com '
+              'Clean Architecture, SOLID e POO, sempre com testes automatizados. '
+              'Também tenho inglês avançado (C1).',
           en: 'I am a software developer focused on mobile (Flutter) and '
               'backend (Kotlin/Java with Spring Boot, Node.js and .NET). I '
-              'published two '
-              'apps on the Apple App Store with a distributed architecture and '
-              'product metrics monitoring.',
-        ),
-        LocalizedText(
-          pt: 'Tenho muita experiência, diversos sites e apps publicados e '
-              'em funcionamento. Além de background em Psicologia e Gestão de '
-              'Pessoas, o que me dá uma visão de produto centrada no usuário. '
-              'Estruturo cada projeto com Clean Architecture, SOLID e POO, '
-              'sempre com testes automatizados. Também tenho inglês '
-              'avançado (C1).',
-          en: 'I have extensive experience, with several websites and apps '
-              'published and running. Plus a background in Psychology and '
-              'People Management, which gives me a user-centered product '
-              'mindset. I structure every project with Clean Architecture, '
-              'SOLID and OOP, always with automated tests. I also have '
-              'advanced English (C1).',
+              'published two apps on the Apple App Store with a distributed '
+              'architecture and product metrics monitoring. I have extensive '
+              'experience, with several websites and apps published and '
+              'running. Plus a background in Psychology and People Management, '
+              'which gives me a user-centered product mindset. I structure '
+              'every project with Clean Architecture, SOLID and OOP, always '
+              'with automated tests. I also have advanced English (C1).',
         ),
       ],
       location: LocalizedText(
