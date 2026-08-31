@@ -7,14 +7,13 @@ import '../../domain/entities/skill_group.dart';
 import '../../domain/entities/social_link.dart';
 
 // =============================================================================
-//  LINKS PARA CONFIRMAR / AJUSTAR
-//  Troque os valores abaixo pelos links definitivos quando quiser.
-//  - Deixe uma string vazia ('') para NAO exibir aquele botao no card.
+//  LINKS DOS PROJETOS
+//  Uma string vazia ('') esconde o botao correspondente no card.
+//  Para sinalizar codigo fechado, use `privateRepo: true` no Project.
 // =============================================================================
 class PortfolioLinks {
   const PortfolioLinks._();
 
-  // Confirmados:
   static const String bibliaGameApp =
       'https://github.com/GabGFS/biblia-game-app';
   static const String bibliaAppStore =
@@ -31,7 +30,6 @@ class PortfolioLinks {
   static const String golemsLive =
       'https://gabgfs.github.io/SitePrimeiroJogoLowCode/';
 
-  // A CONFIRMAR (preencha quando tiver o link exato; deixe '' para esconder o botao):
   static const String bibliaGameApi =
       'https://github.com/GabGFS/biblia-game-api';
 }
