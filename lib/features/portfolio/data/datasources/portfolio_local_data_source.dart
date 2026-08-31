@@ -111,7 +111,7 @@ class PortfolioLocalDataSourceImpl implements PortfolioLocalDataSource {
           ),
         ),
         ProfileHighlight(
-          value: '8+',
+          value: '14+',
           label: LocalizedText(
               pt: 'projetos ponta a ponta', en: 'end-to-end projects'),
         ),
