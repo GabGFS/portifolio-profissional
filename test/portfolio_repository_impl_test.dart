@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:portfolio/features/portfolio/data/datasources/portfolio_local_data_source.dart';
 import 'package:portfolio/features/portfolio/data/repositories/portfolio_repository_impl.dart';
+import 'package:portfolio/features/portfolio/domain/entities/developer_profile.dart';
 import 'package:portfolio/features/portfolio/domain/entities/project.dart';
 
 void main() {
@@ -16,7 +17,8 @@ void main() {
     test('remove links vazios (sem URL) dos projetos', () async {
       final List<Project> projects = await repository.getProjects();
       final bool everyLinkHasUrl = projects.every(
-        (Project p) => p.links.every((ProjectLink l) => l.url.trim().isNotEmpty),
+        (Project p) =>
+            p.links.every((ProjectLink l) => l.url.trim().isNotEmpty),
       );
       expect(everyLinkHasUrl, isTrue);
     });
@@ -28,7 +30,7 @@ void main() {
     });
 
     test('perfil possui bio e destaques', () async {
-      final profile = await repository.getProfile();
+      final DeveloperProfile profile = await repository.getProfile();
       expect(profile.bio, isNotEmpty);
       expect(profile.highlights.length, 4);
     });

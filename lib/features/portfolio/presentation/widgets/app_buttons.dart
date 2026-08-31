@@ -32,7 +32,8 @@ class GhostButton extends StatelessWidget {
         final List<Widget> row = <Widget>[
           Text(
             label,
-            style: AppText.label.copyWith(color: fg, fontWeight: FontWeight.w700),
+            style:
+                AppText.label.copyWith(color: fg, fontWeight: FontWeight.w700),
           ),
           if (icon != null) ...<Widget>[
             const SizedBox(width: 10),
@@ -48,9 +49,13 @@ class GhostButton extends StatelessWidget {
             decoration: BoxDecoration(
               color: hovering ? AppColors.surface : Colors.transparent,
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: hovering ? hoverColor : AppColors.borderStrong),
+              border: Border.all(
+                  color: hovering ? hoverColor : AppColors.borderStrong),
               boxShadow: const <BoxShadow>[
-                BoxShadow(color: Color(0x0A000000), blurRadius: 8, offset: Offset(0, 2)),
+                BoxShadow(
+                    color: Color(0x0A000000),
+                    blurRadius: 8,
+                    offset: Offset(0, 2)),
               ],
             ),
             child: Row(
@@ -65,48 +70,3 @@ class GhostButton extends StatelessWidget {
 }
 
 /// Botao preenchido (acento) — uso pontual.
-class PrimaryButton extends StatelessWidget {
-  final String label;
-  final IconData? icon;
-  final VoidCallback onTap;
-
-  const PrimaryButton({
-    super.key,
-    required this.label,
-    required this.onTap,
-    this.icon,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Hover(
-      builder: (bool hovering) {
-        return GestureDetector(
-          onTap: onTap,
-          child: AnimatedContainer(
-            duration: AppDurations.fast,
-            transform: Matrix4.translationValues(0, hovering ? -2 : 0, 0),
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 13),
-            decoration: BoxDecoration(
-              color: AppColors.primary,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                if (icon != null) ...<Widget>[
-                  FaIcon(icon, size: 14, color: const Color(0xFF0D0E11)),
-                  const SizedBox(width: 10),
-                ],
-                Text(
-                  label,
-                  style: AppText.label.copyWith(color: const Color(0xFF0D0E11)),
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
-  }
-}

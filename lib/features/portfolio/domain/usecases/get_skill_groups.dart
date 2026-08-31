@@ -9,6 +9,5 @@ class GetSkillGroups implements UseCase<List<SkillGroup>, NoParams> {
   const GetSkillGroups(this.repository);
 
   @override
-  Future<List<SkillGroup>> call(NoParams params) =>
-      repository.getSkillGroups();
+  Future<List<SkillGroup>> call(NoParams params) => repository.getSkillGroups();
 }

@@ -19,20 +19,11 @@ class AppTranslations extends Translations {
 
     // Hero
     'hero.greeting': 'Hello World! Meu nome é',
-    'hero.role': 'Desenvolvedora de Software · Mobile & Backend',
     'hero.ctaCv': 'Meu Currículo',
-    'hero.ctaProjects': 'Ver projetos',
-    'hero.ctaContact': 'Fale comigo',
-    'hero.available': 'Disponível para novos projetos',
-    'hero.scroll': 'Role para explorar',
 
     // Sobre
     'about.kicker': 'Sobre mim',
     'about.title': 'Do mobile ao backend, com arquitetura limpa',
-    'stat.appstore': 'app mobile publicado',
-    'stat.retention': 'retenção de usuários ativos',
-    'stat.projects': 'projetos ponta a ponta',
-    'stat.english': 'inglês avançado',
 
     // Skills
     'skills.kicker': 'Stacks',
@@ -43,13 +34,22 @@ class AppTranslations extends Translations {
     // Projetos
     'projects.kicker': 'Meu trabalho',
     'projects.title': 'Veja os projetos em destaque',
-    'projects.subtitle': 'Uma seleção de projetos que desenvolvi de ponta a ponta.',
+    'projects.subtitle':
+        'Uma seleção de projetos que desenvolvi de ponta a ponta.',
     'projects.featured': 'Destaque',
     'action.code': 'Code',
     'action.live': 'View',
     'action.appstore': 'App Store',
     'action.private': 'Repositório privado',
-    'action.details': 'Detalhes',
+    'action.watch': 'Ver vídeo',
+    'action.play': 'Reproduzir',
+    'action.pause': 'Pausar',
+    'action.mute': 'Desativar som',
+    'action.unmute': 'Ativar som',
+    'action.close': 'Fechar',
+    'action.videoError': 'Não foi possível carregar o vídeo.',
+    'contact.emailSubject': 'Contato via portfólio',
+    'contact.whatsappMessage': 'Olá, Gabrielle! Vi o seu portfólio.',
 
     // Servicos
     'services.kicker': 'Serviços',
@@ -58,17 +58,11 @@ class AppTranslations extends Translations {
     // Contato
     'contact.kicker': 'Contato',
     'contact.title': 'Gostou do meu trabalho?',
-    'contact.subtitle': 'Entre em contato ou acompanhe as minhas redes sociais!',
-    'contact.emailBtn': 'Enviar e-mail',
-    'contact.whatsappBtn': 'WhatsApp',
-    'contact.copied': 'E-mail copiado!',
+    'contact.subtitle':
+        'Entre em contato ou acompanhe as minhas redes sociais!',
 
     // Rodape
-    'footer.built': 'Feito em Flutter, com Clean Architecture, SOLID e POO.',
     'footer.rights': 'Todos os direitos reservados.',
-    'footer.backToTop': 'Voltar ao topo',
-
-    'lang.switchTo': 'EN',
   };
 
   static const Map<String, String> _en = <String, String>{
@@ -82,20 +76,11 @@ class AppTranslations extends Translations {
 
     // Hero
     'hero.greeting': 'Hello World! My name is',
-    'hero.role': 'Software Developer · Mobile & Backend',
     'hero.ctaCv': 'My Resume',
-    'hero.ctaProjects': 'View projects',
-    'hero.ctaContact': 'Get in touch',
-    'hero.available': 'Available for new projects',
-    'hero.scroll': 'Scroll to explore',
 
     // About
     'about.kicker': 'About me',
     'about.title': 'From mobile to backend, with clean architecture',
-    'stat.appstore': 'published mobile app',
-    'stat.retention': 'active-user retention',
-    'stat.projects': 'end-to-end projects',
-    'stat.english': 'advanced English',
 
     // Skills
     'skills.kicker': 'Stack',
@@ -112,7 +97,15 @@ class AppTranslations extends Translations {
     'action.live': 'View',
     'action.appstore': 'App Store',
     'action.private': 'Private repo',
-    'action.details': 'Details',
+    'action.watch': 'Watch video',
+    'action.play': 'Play',
+    'action.pause': 'Pause',
+    'action.mute': 'Mute',
+    'action.unmute': 'Unmute',
+    'action.close': 'Close',
+    'action.videoError': 'The video could not be loaded.',
+    'contact.emailSubject': 'Contact via portfolio',
+    'contact.whatsappMessage': 'Hi, Gabrielle! I saw your portfolio.',
 
     // Services
     'services.kicker': 'Services',
@@ -122,15 +115,8 @@ class AppTranslations extends Translations {
     'contact.kicker': 'Contact',
     'contact.title': 'Liked my work?',
     'contact.subtitle': 'Get in touch or follow me on social media!',
-    'contact.emailBtn': 'Send e-mail',
-    'contact.whatsappBtn': 'WhatsApp',
-    'contact.copied': 'E-mail copied!',
 
     // Footer
-    'footer.built': 'Built with Flutter — Clean Architecture, SOLID and OOP.',
     'footer.rights': 'All rights reserved.',
-    'footer.backToTop': 'Back to top',
-
-    'lang.switchTo': 'PT',
   };
 }

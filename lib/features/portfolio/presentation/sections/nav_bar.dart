@@ -15,6 +15,8 @@ import '../widgets/language_toggle.dart';
 /// Itens de navegacao (rotulo -> secao). Reutilizado pelo drawer mobile.
 const List<(String, PortfolioSection)> kNavItems = <(String, PortfolioSection)>[
   ('nav.home', PortfolioSection.home),
+  ('nav.about', PortfolioSection.about),
+  ('nav.skills', PortfolioSection.skills),
   ('nav.projects', PortfolioSection.projects),
   ('nav.services', PortfolioSection.services),
   ('nav.contact', PortfolioSection.contact),
@@ -83,7 +85,8 @@ class NavBar extends StatelessWidget {
         const SizedBox(width: 10),
         GestureDetector(
           onTap: onMenuTap,
-          child: const FaIcon(FontAwesomeIcons.bars, size: 18, color: AppColors.textPrimary),
+          child: const FaIcon(FontAwesomeIcons.bars,
+              size: 18, color: AppColors.textPrimary),
         ),
       ],
     );
@@ -127,7 +130,8 @@ class _NavLink extends StatelessWidget {
             child: Text(
               labelKey.tr,
               style: AppText.label.copyWith(
-                color: hovering ? AppColors.textPrimary : AppColors.textSecondary,
+                color:
+                    hovering ? AppColors.textPrimary : AppColors.textSecondary,
               ),
             ),
           ),

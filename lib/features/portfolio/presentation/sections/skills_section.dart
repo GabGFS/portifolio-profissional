@@ -51,9 +51,8 @@ class SkillsSection extends StatelessWidget {
                       alignment: WrapAlignment.center,
                       spacing: 10,
                       runSpacing: 10,
-                      children: group.items
-                          .map((String i) => TechChip(i))
-                          .toList(),
+                      children:
+                          group.items.map((String i) => TechChip(i)).toList(),
                     ),
                   ],
                 ),

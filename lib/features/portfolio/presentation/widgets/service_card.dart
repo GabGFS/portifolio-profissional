@@ -20,20 +20,9 @@ class ServiceCard extends StatelessWidget {
     required this.languageCode,
   });
 
-  Color get _accent {
-    switch (service.type) {
-      case ServiceType.mobile:
-        return AppColors.green;
-      case ServiceType.backend:
-        return AppColors.blue;
-      case ServiceType.web:
-        return AppColors.purple;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    final Color accent = _accent;
+    final Color accent = PortfolioVisuals.serviceColor(service.type);
     return Hover(
       cursor: MouseCursor.defer,
       builder: (bool hovering) {
@@ -45,7 +34,10 @@ class ServiceCard extends StatelessWidget {
           decoration: BoxDecoration(
             color: AppColors.surface,
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: hovering ? accent.withValues(alpha: 0.6) : AppColors.border),
+            border: Border.all(
+                color: hovering
+                    ? accent.withValues(alpha: 0.6)
+                    : AppColors.border),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,13 +51,15 @@ class ServiceCard extends StatelessWidget {
                   border: Border.all(color: accent.withValues(alpha: 0.35)),
                 ),
                 child: Center(
-                  child: FaIcon(PortfolioVisuals.serviceIcon(service.type), size: 20, color: accent),
+                  child: FaIcon(PortfolioVisuals.serviceIcon(service.type),
+                      size: 20, color: accent),
                 ),
               ),
               const SizedBox(height: 22),
               Text(service.title.resolve(languageCode), style: AppText.h3),
               const SizedBox(height: 10),
-              Text(service.description.resolve(languageCode), style: AppText.body),
+              Text(service.description.resolve(languageCode),
+                  style: AppText.body),
               const SizedBox(height: 18),
               Wrap(
                 spacing: 8,

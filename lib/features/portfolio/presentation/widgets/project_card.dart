@@ -9,6 +9,7 @@ import '../../../../core/theme/app_typography.dart';
 import '../../domain/entities/project.dart';
 import 'hover.dart';
 import 'portfolio_visuals.dart';
+import 'project_video_dialog.dart';
 import 'tech_icons.dart';
 
 /// Card de projeto no estilo da referencia: capa branded, titulo, descricao e
@@ -50,7 +51,9 @@ class ProjectCard extends StatelessWidget {
             border: Border.all(
               color: hovering
                   ? accent.withValues(alpha: 0.7)
-                  : (project.featured ? accent.withValues(alpha: 0.4) : AppColors.border),
+                  : (project.featured
+                      ? accent.withValues(alpha: 0.4)
+                      : AppColors.border),
             ),
             boxShadow: hovering
                 ? <BoxShadow>[
@@ -65,28 +68,34 @@ class ProjectCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              _cover(accent),
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      project.type.resolve(languageCode),
-                      style: AppText.kicker.copyWith(color: accent, fontSize: 13.5),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(project.name, style: AppText.h3),
-                    const SizedBox(height: 10),
-                    Text(
-                      project.description.resolve(languageCode),
-                      style: AppText.body,
-                      maxLines: 5,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    const SizedBox(height: 18),
-                    _links(accent),
-                  ],
+              _cover(context, accent, hovering),
+              // Expanded + Spacer: com os cards esticados pela grade, o texto
+              // fica no topo e os botoes ancoram na base — alinhados entre si.
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        project.type.resolve(languageCode),
+                        style: AppText.kicker
+                            .copyWith(color: accent, fontSize: 13.5),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(project.name, style: AppText.h3),
+                      const SizedBox(height: 10),
+                      Text(
+                        project.description.resolve(languageCode),
+                        style: AppText.body,
+                        maxLines: 5,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      const SizedBox(height: 18),
+                      const Spacer(),
+                      _links(accent),
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -96,7 +105,7 @@ class ProjectCard extends StatelessWidget {
     );
   }
 
-  Widget _cover(Color accent) {
+  Widget _cover(BuildContext context, Color accent, bool hovering) {
     final TechIcon? tech = _mainTech;
     return SizedBox(
       height: 132,
@@ -124,8 +133,11 @@ class ProjectCard extends StatelessWidget {
             child: Opacity(
               opacity: 0.14,
               child: tech != null
-                  ? SvgPicture.asset(tech.asset, width: 108, height: 108,
-                      colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn))
+                  ? SvgPicture.asset(tech.asset,
+                      width: 108,
+                      height: 108,
+                      colorFilter:
+                          const ColorFilter.mode(Colors.white, BlendMode.srcIn))
                   : FaIcon(PortfolioVisuals.categoryIcon(project.category),
                       size: 100, color: Colors.white),
             ),
@@ -146,10 +158,15 @@ class ProjectCard extends StatelessWidget {
                   ),
                   child: Center(
                     child: tech != null
-                        ? SvgPicture.asset(tech.asset, width: 22, height: 22,
-                            colorFilter: ColorFilter.mode(tech.color, BlendMode.srcIn))
-                        : FaIcon(PortfolioVisuals.categoryIcon(project.category),
-                            size: 18, color: accent),
+                        ? SvgPicture.asset(tech.asset,
+                            width: 22,
+                            height: 22,
+                            colorFilter:
+                                ColorFilter.mode(tech.color, BlendMode.srcIn))
+                        : FaIcon(
+                            PortfolioVisuals.categoryIcon(project.category),
+                            size: 18,
+                            color: accent),
                   ),
                 ),
                 const Spacer(),
@@ -157,7 +174,53 @@ class ProjectCard extends StatelessWidget {
               ],
             ),
           ),
+          if (project.hasVideo) _playOverlay(context, accent, hovering),
         ],
+      ),
+    );
+  }
+
+  /// Camada com o botao de play, revelada quando o mouse entra no card.
+  Widget _playOverlay(BuildContext context, Color accent, bool hovering) {
+    return Positioned.fill(
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: GestureDetector(
+          onTap: () => showProjectVideo(
+            context,
+            asset: project.videoAsset!,
+            title: project.name,
+            accent: accent,
+          ),
+          child: AnimatedOpacity(
+            duration: AppDurations.fast,
+            opacity: hovering ? 1 : 0,
+            child: ColoredBox(
+              color: AppColors.background.withValues(alpha: 0.62),
+              child: Center(
+                child: Tooltip(
+                  message: 'action.watch'.tr,
+                  child: Container(
+                    width: 58,
+                    height: 58,
+                    decoration: BoxDecoration(
+                      color: AppColors.background.withValues(alpha: 0.85),
+                      shape: BoxShape.circle,
+                      border: Border.all(color: accent, width: 2),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 4),
+                      child: Center(
+                        child: FaIcon(FontAwesomeIcons.play,
+                            size: 20, color: accent),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -177,7 +240,8 @@ class ProjectCard extends StatelessWidget {
           const SizedBox(width: 6),
           Text(
             'projects.featured'.tr,
-            style: AppText.small.copyWith(color: accent, fontWeight: FontWeight.w600, fontSize: 11.5),
+            style: AppText.small.copyWith(
+                color: accent, fontWeight: FontWeight.w600, fontSize: 11.5),
           ),
         ],
       ),
@@ -185,38 +249,35 @@ class ProjectCard extends StatelessWidget {
   }
 
   Widget _links(Color accent) {
-    if (!project.hasLinks) {
-      return Row(
-        children: <Widget>[
-          const FaIcon(FontAwesomeIcons.lock, size: 12, color: AppColors.textMuted),
-          const SizedBox(width: 8),
-          Text('action.private'.tr, style: AppText.small),
-        ],
-      );
-    }
     return Wrap(
       spacing: 10,
       runSpacing: 10,
-      children: project.links
-          .map((ProjectLink link) => _LinkButton(
-                icon: PortfolioVisuals.linkIcon(link.type),
-                label: _linkLabelKey(link.type).tr,
-                accent: accent,
-                onTap: () => onLinkTap(link),
-              ))
-          .toList(),
+      crossAxisAlignment: WrapCrossAlignment.center,
+      children: <Widget>[
+        for (final ProjectLink link in project.links)
+          _LinkButton(
+            icon: PortfolioVisuals.linkIcon(link.type),
+            label: PortfolioVisuals.linkLabelKey(link.type).tr,
+            accent: accent,
+            onTap: () => onLinkTap(link),
+          ),
+        if (project.privateRepo) _privateTag(),
+      ],
     );
   }
 
-  String _linkLabelKey(ProjectLinkType type) {
-    switch (type) {
-      case ProjectLinkType.code:
-        return 'action.code';
-      case ProjectLinkType.live:
-        return 'action.live';
-      case ProjectLinkType.appStore:
-        return 'action.appstore';
-    }
+  /// Aviso de codigo fechado — some ao lado dos botoes quando existem, e
+  /// sozinho quando o projeto nao tem nenhum link publico.
+  Widget _privateTag() {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        const FaIcon(FontAwesomeIcons.lock,
+            size: 12, color: AppColors.textMuted),
+        const SizedBox(width: 8),
+        Text('action.private'.tr, style: AppText.small),
+      ],
+    );
   }
 }
 
@@ -246,15 +307,20 @@ class _LinkButton extends StatelessWidget {
             decoration: BoxDecoration(
               color: hovering ? AppColors.surfaceHover : Colors.transparent,
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: hovering ? accent : AppColors.borderStrong),
+              border:
+                  Border.all(color: hovering ? accent : AppColors.borderStrong),
               boxShadow: const <BoxShadow>[
-                BoxShadow(color: Color(0x0A000000), blurRadius: 8, offset: Offset(0, 2)),
+                BoxShadow(
+                    color: Color(0x0A000000),
+                    blurRadius: 8,
+                    offset: Offset(0, 2)),
               ],
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Text(label, style: AppText.label.copyWith(color: fg, fontSize: 14)),
+                Text(label,
+                    style: AppText.label.copyWith(color: fg, fontSize: 14)),
                 const SizedBox(width: 8),
                 FaIcon(icon, size: 13, color: fg),
               ],

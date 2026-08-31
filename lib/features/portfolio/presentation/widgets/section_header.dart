@@ -27,12 +27,15 @@ class SectionHeader extends StatelessWidget {
     final CrossAxisAlignment cross =
         center ? CrossAxisAlignment.center : CrossAxisAlignment.start;
     final TextAlign textAlign = center ? TextAlign.center : TextAlign.start;
-    final double titleSize = Responsive.value<double>(context, mobile: 24, desktop: 30);
+    final double titleSize =
+        Responsive.value<double>(context, mobile: 24, desktop: 30);
 
     return Column(
       crossAxisAlignment: cross,
       children: <Widget>[
-        Text(kickerKey.tr, style: AppText.kicker.copyWith(color: accent), textAlign: textAlign),
+        Text(kickerKey.tr,
+            style: AppText.kicker.copyWith(color: accent),
+            textAlign: textAlign),
         const SizedBox(height: 10),
         Text(
           titleKey.tr,
@@ -43,7 +46,8 @@ class SectionHeader extends StatelessWidget {
           const SizedBox(height: 14),
           ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 620),
-            child: Text(subtitleKey!.tr, textAlign: textAlign, style: AppText.body),
+            child: Text(subtitleKey!.tr,
+                textAlign: textAlign, style: AppText.body),
           ),
         ],
       ],

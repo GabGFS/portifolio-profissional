@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../../../core/constants/app_sizes.dart';
-import '../controllers/portfolio_controller.dart';
 
 /// Revela o filho com fade + leve deslize quando ele entra na viewport.
 ///
-/// Observa o [ScrollController] compartilhado do [PortfolioController] e dispara
-/// a animacao uma unica vez, sem depender de pacotes externos.
+/// Widget generico: obtem a rolagem via [PrimaryScrollController], sem
+/// conhecer nenhum controller de feature — por isso pode ser reaproveitado e
+/// testado isoladamente.
 class RevealOnScroll extends StatefulWidget {
   final Widget child;
   final double offsetY;
@@ -31,9 +30,18 @@ class _RevealOnScrollState extends State<RevealOnScroll> {
   @override
   void initState() {
     super.initState();
-    _scrollController = Get.find<PortfolioController>().scrollController;
-    _scrollController?.addListener(_check);
     WidgetsBinding.instance.addPostFrameCallback((_) => _check());
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final ScrollController? controller =
+        PrimaryScrollController.maybeOf(context);
+    if (identical(controller, _scrollController)) return;
+    _scrollController?.removeListener(_check);
+    _scrollController = controller;
+    _scrollController?.addListener(_check);
   }
 
   void _check() {

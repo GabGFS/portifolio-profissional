@@ -33,6 +33,7 @@ class ContactSection extends StatelessWidget {
     ];
 
     return SectionWrapper(
+      background: AppColors.backgroundAlt,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
@@ -74,19 +75,6 @@ class _ContactRow extends StatelessWidget {
   final VoidCallback onTap;
   const _ContactRow({required this.link, required this.onTap});
 
-  String get _label {
-    switch (link.type) {
-      case SocialType.github:
-        return 'GitHub';
-      case SocialType.linkedin:
-        return 'LinkedIn';
-      case SocialType.email:
-        return 'E-mail';
-      case SocialType.whatsapp:
-        return 'WhatsApp';
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final Color accent = PortfolioVisuals.socialColor(link.type);
@@ -100,14 +88,20 @@ class _ContactRow extends StatelessWidget {
             decoration: BoxDecoration(
               color: hovering ? AppColors.surfaceHover : AppColors.surface,
               borderRadius: BorderRadius.circular(14),
-              border: Border.all(color: hovering ? accent.withValues(alpha: 0.6) : AppColors.border),
+              border: Border.all(
+                  color: hovering
+                      ? accent.withValues(alpha: 0.6)
+                      : AppColors.border),
             ),
             child: Row(
               children: <Widget>[
-                FaIcon(PortfolioVisuals.socialIcon(link.type), size: 20, color: accent),
+                FaIcon(PortfolioVisuals.socialIcon(link.type),
+                    size: 20, color: accent),
                 const SizedBox(width: 16),
                 Expanded(
-                  child: Text(_label, style: AppText.label.copyWith(color: AppColors.textPrimary)),
+                  child: Text(PortfolioVisuals.socialLabel(link.type),
+                      style:
+                          AppText.label.copyWith(color: AppColors.textPrimary)),
                 ),
                 FaIcon(
                   FontAwesomeIcons.arrowUpRightFromSquare,

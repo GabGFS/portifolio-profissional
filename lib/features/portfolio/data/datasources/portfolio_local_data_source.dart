@@ -15,22 +15,25 @@ class PortfolioLinks {
   const PortfolioLinks._();
 
   // Confirmados:
-  static const String bibliaGameApp = 'https://github.com/GabGFS/biblia-game-app';
+  static const String bibliaGameApp =
+      'https://github.com/GabGFS/biblia-game-app';
   static const String bibliaAppStore =
       'https://apps.apple.com/br/app/b%C3%ADblia-game/id6758924593';
   static const String plenaVittaCode = 'https://github.com/GabGFS/PlenaVittaTs';
   static const String plenaVittaLive = 'https://plenavitta.vercel.app';
-  static const String realleadApp = 'https://github.com/brunomat480/reallead-app';
+  static const String realleadAppStore =
+      'https://apps.apple.com/br/app/reallead/id6795161973';
   static const String lazarosCode = 'https://github.com/GabGFS/testelazaros';
   static const String agendamentoCode =
       'https://github.com/GabGFS/TesteSiteGestaodeAgendamento';
   static const String golemsCode =
       'https://github.com/GabGFS/SitePrimeiroJogoLowCode';
+  static const String golemsLive =
+      'https://gabgfs.github.io/SitePrimeiroJogoLowCode/';
 
   // A CONFIRMAR (preencha quando tiver o link exato; deixe '' para esconder o botao):
-  static const String bibliaGameApi = 'https://github.com/GabGFS/biblia-game-api';
-  static const String creditProposalsCode = ''; // <-- repo do desafio .NET
-  static const String golemsLive = ''; // <-- GitHub Pages, se ativado
+  static const String bibliaGameApi =
+      'https://github.com/GabGFS/biblia-game-api';
 }
 
 /// Fonte de dados local (em memoria) do portfolio.
@@ -55,36 +58,42 @@ class PortfolioLocalDataSourceImpl implements PortfolioLocalDataSource {
       name: AppConstants.fullName,
       displayName: AppConstants.displayName,
       role: LocalizedText(
-        pt: 'Desenvolvedora de Software · Mobile & Backend',
-        en: 'Software Developer · Mobile & Backend',
+        pt: 'Desenvolvedora de Software · Mobile + Backend',
+        en: 'Software Developer · Mobile + Backend',
       ),
       tagline: LocalizedText(
-        pt: 'Transformo ideias em aplicações reais, desde a criação do escopo '
-          'até a publicação, '
-            'com arquitetura limpa, testes e foco em qualidade.',
-        en: 'I turn ideas into real applications — from mobile to backend — '
+        pt: 'Transformo ideias em aplicações reais, desde a criação do '
+            'escopo até a publicação, com arquitetura limpa, testes e '
+            'foco em qualidade.',
+        en: 'I turn ideas into real applications, from scoping to publishing, '
             'with clean architecture, testing and a focus on quality.',
       ),
       bio: <LocalizedText>[
         LocalizedText(
           pt: 'Sou desenvolvedora de software com foco em mobile (Flutter) e '
-              'backend (Kotlin/Spring Boot, Node.js e .NET). Publiquei um app '
-              'na Apple App Store com arquitetura distribuída e monitoramento '
-              'de métricas de produto.',
+              'backend (Kotlin/Java com Spring Boot, Node.js e .NET). Publiquei '
+              'dois '
+              'apps na Apple App Store com arquitetura distribuída e '
+              'monitoramento de métricas de produto.',
           en: 'I am a software developer focused on mobile (Flutter) and '
-              'backend (Kotlin/Spring Boot, Node.js and .NET). I published an '
-              'app on the Apple App Store with a distributed architecture and '
+              'backend (Kotlin/Java with Spring Boot, Node.js and .NET). I '
+              'published two '
+              'apps on the Apple App Store with a distributed architecture and '
               'product metrics monitoring.',
         ),
         LocalizedText(
-          pt: 'Tenho background em Psicologia e Gestão de Pessoas, o que me dá '
-              'uma visão de produto centrada no usuário. Estruturo cada projeto '
-              'com Clean Architecture, SOLID e POO, sempre com testes '
-              'automatizados. Inglês avançado (C1).',
-          en: 'With a background in Psychology and People Management, I bring a '
-              'user-centered product mindset. I structure every project with '
-              'Clean Architecture, SOLID and OOP, always with automated tests. '
-              'Advanced English (C1).',
+          pt: 'Tenho muita experiência, diversos sites e apps publicados e '
+              'em funcionamento. Além de background em Psicologia e Gestão de '
+              'Pessoas, o que me dá uma visão de produto centrada no usuário. '
+              'Estruturo cada projeto com Clean Architecture, SOLID e POO, '
+              'sempre com testes automatizados. Também tenho inglês '
+              'avançado (C1).',
+          en: 'I have extensive experience, with several websites and apps '
+              'published and running. Plus a background in Psychology and '
+              'People Management, which gives me a user-centered product '
+              'mindset. I structure every project with Clean Architecture, '
+              'SOLID and OOP, always with automated tests. I also have '
+              'advanced English (C1).',
         ),
       ],
       location: LocalizedText(
@@ -96,8 +105,11 @@ class PortfolioLocalDataSourceImpl implements PortfolioLocalDataSource {
       cvEnUrl: 'cv/GabrielleSoratto_CV_EN.pdf',
       highlights: <ProfileHighlight>[
         ProfileHighlight(
-          value: 'App Store',
-          label: LocalizedText(pt: 'app mobile publicado', en: 'published mobile app'),
+          value: '2 apps',
+          label: LocalizedText(
+            pt: 'publicados na App Store',
+            en: 'published on the App Store',
+          ),
         ),
         ProfileHighlight(
           value: '~44%',
@@ -108,7 +120,8 @@ class PortfolioLocalDataSourceImpl implements PortfolioLocalDataSource {
         ),
         ProfileHighlight(
           value: '8+',
-          label: LocalizedText(pt: 'projetos ponta a ponta', en: 'end-to-end projects'),
+          label: LocalizedText(
+              pt: 'projetos ponta a ponta', en: 'end-to-end projects'),
         ),
         ProfileHighlight(
           value: 'C1',
@@ -124,6 +137,7 @@ class PortfolioLocalDataSourceImpl implements PortfolioLocalDataSource {
       // 1 — Destaque: app publicado na App Store
       Project(
         id: 'biblia-game',
+        videoAsset: 'assets/videos/biblia-game.mp4',
         name: 'Bíblia Game',
         featured: true,
         year: '2025',
@@ -142,7 +156,14 @@ class PortfolioLocalDataSourceImpl implements PortfolioLocalDataSource {
               'Kotlin/Spring Boot backend + AWS, with ~5% conversion and ~44% '
               'active-user retention.',
         ),
-        techs: <String>['Flutter', 'Dart', 'GetX', 'Firebase', 'Clean Architecture', 'AWS'],
+        techs: <String>[
+          'Flutter',
+          'Dart',
+          'GetX',
+          'Firebase',
+          'Clean Architecture',
+          'AWS'
+        ],
         links: <ProjectLink>[
           ProjectLink.code(PortfolioLinks.bibliaGameApp),
           ProjectLink.appStore(PortfolioLinks.bibliaAppStore),
@@ -166,7 +187,14 @@ class PortfolioLocalDataSourceImpl implements PortfolioLocalDataSource {
               'PostgreSQL, Swagger/OpenAPI docs, JUnit 5 + MockK tests, '
               'containerized with Docker.',
         ),
-        techs: <String>['Kotlin', 'Spring Boot', 'PostgreSQL', 'Swagger', 'Docker', 'JUnit'],
+        techs: <String>[
+          'Kotlin',
+          'Spring Boot',
+          'PostgreSQL',
+          'Swagger',
+          'Docker',
+          'JUnit'
+        ],
         links: <ProjectLink>[
           ProjectLink.code(PortfolioLinks.bibliaGameApi),
         ],
@@ -175,6 +203,7 @@ class PortfolioLocalDataSourceImpl implements PortfolioLocalDataSource {
       // 3 — Full-stack, cliente real, no ar
       Project(
         id: 'plena-vitta',
+        videoAsset: 'assets/videos/plena-vitta.mp4',
         name: 'Plena Vitta',
         year: '2025',
         category: ProjectCategory.fullstack,
@@ -194,7 +223,15 @@ class PortfolioLocalDataSourceImpl implements PortfolioLocalDataSource {
               'TypeScript back, Clean Architecture + SOLID and 300+ automated '
               'tests.',
         ),
-        techs: <String>['React', 'TypeScript', 'Node.js', 'Express', 'SQLite / Turso', 'JWT', 'Docker'],
+        techs: <String>[
+          'React',
+          'TypeScript',
+          'Node.js',
+          'Express',
+          'SQLite / Turso',
+          'JWT',
+          'Docker'
+        ],
         links: <ProjectLink>[
           ProjectLink.code(PortfolioLinks.plenaVittaCode),
           ProjectLink.live(PortfolioLinks.plenaVittaLive),
@@ -204,6 +241,7 @@ class PortfolioLocalDataSourceImpl implements PortfolioLocalDataSource {
       // 4 — App mobile cliente real (Grupo Fazolli / RealLead)
       Project(
         id: 'reallead-app',
+        videoAsset: 'assets/videos/reallead-app.mp4',
         name: 'RealLead App',
         year: '2025',
         category: ProjectCategory.mobile,
@@ -221,9 +259,18 @@ class PortfolioLocalDataSourceImpl implements PortfolioLocalDataSource {
               'Architecture + MVVM with GetX, Supabase, Dio and fl_chart charts, '
               'consuming a NestJS API.',
         ),
-        techs: <String>['Flutter', 'Dart', 'GetX', 'Supabase', 'Dio', 'fl_chart'],
+        techs: <String>[
+          'Flutter',
+          'Dart',
+          'GetX',
+          'Supabase',
+          'Dio',
+          'fl_chart'
+        ],
+        // Repositorio do cliente — fechado; o app, porem, esta publicado.
+        privateRepo: true,
         links: <ProjectLink>[
-          ProjectLink.code(PortfolioLinks.realleadApp),
+          ProjectLink.appStore(PortfolioLinks.realleadAppStore),
         ],
       ),
 
@@ -247,16 +294,23 @@ class PortfolioLocalDataSourceImpl implements PortfolioLocalDataSource {
               'worker), idempotent webhooks, EF Core + PostgreSQL, JWT with '
               'per-tenant isolation and xUnit tests.',
         ),
-        techs: <String>['.NET 8', 'C#', 'ASP.NET Core', 'EF Core', 'PostgreSQL', 'AWS SQS'],
-        links: <ProjectLink>[
-          ProjectLink.code(PortfolioLinks.creditProposalsCode),
+        techs: <String>[
+          '.NET 8',
+          'C#',
+          'ASP.NET Core',
+          'EF Core',
+          'PostgreSQL',
+          'AWS SQS'
         ],
+        // Desafio tecnico sob NDA — o codigo nao e publico.
+        privateRepo: true,
+        links: <ProjectLink>[],
       ),
 
       // 6 — Full-stack Java + Angular
       Project(
         id: 'user-profile-manager',
-        name: 'User & Profile Manager',
+        name: 'User + Profile Manager',
         year: '2025',
         category: ProjectCategory.fullstack,
         type: LocalizedText(
@@ -265,17 +319,24 @@ class PortfolioLocalDataSourceImpl implements PortfolioLocalDataSource {
         ),
         description: LocalizedText(
           pt: 'Sistema de gestão de usuários e perfis (relação N:N). Backend '
-              'Java 24 + Spring Boot com Clean Architecture (ports & adapters) '
+              'Java 24 + Spring Boot com Clean Architecture (ports and adapters) '
               'e frontend Angular 16 + Angular Material. PostgreSQL, Docker e '
               '200+ testes (JUnit/Mockito + Karma/Jasmine, 100% de cobertura '
               'no front).',
           en: 'User and profile management system (N:N relation). Java 24 + '
-              'Spring Boot backend with Clean Architecture (ports & adapters) '
+              'Spring Boot backend with Clean Architecture (ports and adapters) '
               'and Angular 16 + Angular Material frontend. PostgreSQL, Docker '
               'and 200+ tests (JUnit/Mockito + Karma/Jasmine, 100% front '
               'coverage).',
         ),
-        techs: <String>['Java', 'Spring Boot', 'Angular', 'TypeScript', 'PostgreSQL', 'Docker'],
+        techs: <String>[
+          'Java',
+          'Spring Boot',
+          'Angular',
+          'TypeScript',
+          'PostgreSQL',
+          'Docker'
+        ],
         links: <ProjectLink>[
           ProjectLink.code(PortfolioLinks.lazarosCode),
         ],
@@ -284,7 +345,7 @@ class PortfolioLocalDataSourceImpl implements PortfolioLocalDataSource {
       // 7 — Web PHP + MVC
       Project(
         id: 'scheduling-mvc',
-        name: 'Client & Scheduling System',
+        name: 'Client + Scheduling System',
         year: '2024',
         category: ProjectCategory.web,
         type: LocalizedText(pt: 'Web · PHP + MVC', en: 'Web · PHP + MVC'),
@@ -307,10 +368,12 @@ class PortfolioLocalDataSourceImpl implements PortfolioLocalDataSource {
       // 8 — Jogo web low-code
       Project(
         id: 'land-of-golems',
+        videoAsset: 'assets/videos/land-of-golems.mp4',
         name: 'Land of Golems',
         year: '2024',
         category: ProjectCategory.game,
-        type: LocalizedText(pt: 'Jogo web · Low-code', en: 'Web game · Low-code'),
+        type:
+            LocalizedText(pt: 'Jogo web · Low-code', en: 'Web game · Low-code'),
         description: LocalizedText(
           pt: 'Jogo HTML5 "Land of Golems" criado com Construct 3 (low-code) e '
               'publicado para a web. Explora lógica de jogo, design de fases e '
@@ -334,13 +397,22 @@ class PortfolioLocalDataSourceImpl implements PortfolioLocalDataSource {
       SkillGroup(
         category: SkillCategory.mobile,
         title: LocalizedText.all('Mobile'),
-        items: <String>['Flutter', 'Dart', 'GetX', 'BLoC', 'Provider', 'get_it', 'SwiftUI'],
+        items: <String>[
+          'Flutter',
+          'Dart',
+          'GetX',
+          'BLoC',
+          'Provider',
+          'get_it',
+          'SwiftUI'
+        ],
       ),
       SkillGroup(
         category: SkillCategory.backend,
         title: LocalizedText.all('Backend'),
         items: <String>[
           'Kotlin',
+          'Java',
           'Spring Boot',
           'Node.js',
           'Express',
@@ -354,21 +426,47 @@ class PortfolioLocalDataSourceImpl implements PortfolioLocalDataSource {
       SkillGroup(
         category: SkillCategory.web,
         title: LocalizedText(pt: 'Front-end Web', en: 'Web Front-end'),
-        items: <String>['React', 'Angular', 'Vue.js', 'Next.js', 'TypeScript', 'Tailwind CSS', 'SCSS / SASS'],
+        items: <String>[
+          'React',
+          'Angular',
+          'Vue.js',
+          'Next.js',
+          'TypeScript',
+          'Tailwind CSS',
+          'SCSS / SASS'
+        ],
       ),
       SkillGroup(
         category: SkillCategory.cloud,
-        title: LocalizedText.all('Cloud & DevOps'),
-        items: <String>['AWS', 'S3', 'SQS', 'SNS', 'Lambda', 'API Gateway', 'ECS', 'Terraform', 'Docker'],
+        title: LocalizedText.all('Cloud + DevOps'),
+        items: <String>[
+          'AWS',
+          'S3',
+          'SQS',
+          'SNS',
+          'Lambda',
+          'API Gateway',
+          'ECS',
+          'Terraform',
+          'Docker'
+        ],
       ),
       SkillGroup(
         category: SkillCategory.databases,
         title: LocalizedText(pt: 'Bancos de dados', en: 'Databases'),
-        items: <String>['PostgreSQL', 'MySQL', 'MongoDB', 'SQLite', 'Supabase', 'Turso / libSQL'],
+        items: <String>[
+          'PostgreSQL',
+          'MySQL',
+          'MongoDB',
+          'SQLite',
+          'Supabase',
+          'Turso / libSQL'
+        ],
       ),
       SkillGroup(
         category: SkillCategory.practices,
-        title: LocalizedText(pt: 'Arquitetura & Testes', en: 'Architecture & Testing'),
+        title: LocalizedText(
+            pt: 'Arquitetura + Testes', en: 'Architecture + Testing'),
         items: <String>[
           'Clean Architecture',
           'SOLID',
@@ -401,18 +499,19 @@ class PortfolioLocalDataSourceImpl implements PortfolioLocalDataSource {
       ),
       ServiceOffering(
         type: ServiceType.backend,
-        title: LocalizedText(pt: 'APIs & Backend', en: 'APIs & Backend'),
+        title: LocalizedText.all('APIs + Backend'),
         description: LocalizedText(
-          pt: 'APIs REST em Kotlin/Spring, Node.js e .NET, com Clean '
+          pt: 'APIs REST em Kotlin/Java com Spring, Node.js e .NET, com Clean '
               'Architecture, autenticação, mensageria e banco de dados.',
-          en: 'REST APIs in Kotlin/Spring, Node.js and .NET, with Clean '
+          en: 'REST APIs in Kotlin/Java with Spring, Node.js and .NET, with Clean '
               'Architecture, authentication, messaging and databases.',
         ),
-        tags: <String>['Kotlin', 'Node.js', '.NET', 'PostgreSQL'],
+        tags: <String>['Kotlin', 'Java', 'Node.js', '.NET', 'PostgreSQL'],
       ),
       ServiceOffering(
         type: ServiceType.web,
-        title: LocalizedText(pt: 'Sites & Sistemas web', en: 'Web sites & systems'),
+        title: LocalizedText(
+            pt: 'Sites + Sistemas web', en: 'Web sites + systems'),
         description: LocalizedText(
           pt: 'Interfaces responsivas em React, Angular e Next.js, integradas '
               'a APIs e prontas para deploy.',
@@ -427,16 +526,22 @@ class PortfolioLocalDataSourceImpl implements PortfolioLocalDataSource {
   @override
   List<SocialLink> getSocialLinks() {
     return const <SocialLink>[
-      SocialLink(type: SocialType.github, url: AppConstants.githubUrl, handle: 'GabGFS'),
+      SocialLink(
+          type: SocialType.github,
+          target: AppConstants.githubUrl,
+          handle: 'GabGFS'),
       SocialLink(
         type: SocialType.linkedin,
-        url: AppConstants.linkedinUrl,
+        target: AppConstants.linkedinUrl,
         handle: 'gabrielle-felsky-soratto',
       ),
-      SocialLink(type: SocialType.email, url: AppConstants.email, handle: AppConstants.email),
+      SocialLink(
+          type: SocialType.email,
+          target: AppConstants.email,
+          handle: AppConstants.email),
       SocialLink(
         type: SocialType.whatsapp,
-        url: AppConstants.whatsappNumber,
+        target: AppConstants.whatsappNumber,
         handle: AppConstants.phoneDisplay,
       ),
     ];

@@ -8,6 +8,9 @@ class AppConstants {
   // Identidade
   static const String fullName = 'Gabrielle Gobira Felsky Soratto';
   static const String displayName = 'Gabrielle Soratto';
+
+  /// Assinatura usada no rodape (mais formal que o displayName).
+  static const String footerName = 'Gabrielle G. F. Soratto';
   static const String monogram = 'GS';
 
   // Contato
@@ -21,11 +24,9 @@ class AppConstants {
       'https://www.linkedin.com/in/gabrielle-felsky-soratto';
 
   // Assets
-  // Troque assets/images/profile.png pela sua foto (mantendo o nome).
-  // O layout ja enquadra a imagem (BoxFit.cover) — nao precisa recortar.
+  // A foto e enquadrada com BoxFit.cover — nao precisa recortar antes.
+  // Os PDFs do CV sao servidos de `web/cv/` (ver DeveloperProfile.cvPtUrl).
   static const String profileImage = 'assets/images/perfil.webp';
-  static const String cvPtAsset = 'assets/cv/GabrielleSoratto_CV_PT.pdf';
-  static const String cvEnAsset = 'assets/cv/GabrielleSoratto_CV_EN.pdf';
 
   // Layout
   static const double maxContentWidth = 1180;

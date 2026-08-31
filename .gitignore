@@ -20,3 +20,6 @@ build/
 _to_delete/
 _stage/
 _*.zip
+
+# Videos originais (fonte pesada, nao versionar)
+_video_sources/

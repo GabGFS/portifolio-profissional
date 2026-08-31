@@ -9,9 +9,8 @@ import 'tech_icons.dart';
 /// Pilula de tecnologia com logo de marca colorido (Simple Icons), quando houver.
 class TechChip extends StatelessWidget {
   final String label;
-  final bool subtle; // mantido por compatibilidade
 
-  const TechChip(this.label, {super.key, this.subtle = false});
+  const TechChip(this.label, {super.key});
 
   @override
   Widget build(BuildContext context) {

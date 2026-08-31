@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/localization/locale_controller.dart';
 import '../../../../core/usecases/usecase.dart';
-import '../../../../core/utils/app_launcher.dart';
+import '../../../../core/ports/app_launcher.dart';
 import '../../domain/entities/developer_profile.dart';
 import '../../domain/entities/project.dart';
 import '../../domain/entities/service_offering.dart';
@@ -32,6 +32,7 @@ class PortfolioController extends GetxController {
     required this.getServices,
     required this.getSocialLinks,
     required this.launcher,
+    required this.localeController,
   });
 
   final GetProfile getProfile;
@@ -40,6 +41,7 @@ class PortfolioController extends GetxController {
   final GetServices getServices;
   final GetSocialLinks getSocialLinks;
   final AppLauncher launcher;
+  final LocaleController localeController;
 
   // Rolagem e ancoras de secao.
   final ScrollController scrollController = ScrollController();
@@ -57,8 +59,10 @@ class PortfolioController extends GetxController {
   final RxList<SocialLink> socialLinks = <SocialLink>[].obs;
   final RxBool showBackToTop = false.obs;
 
-  LocaleController get _locale => Get.find<LocaleController>();
-  String get languageCode => _locale.languageCode;
+  /// Rolagem (em pixels) a partir da qual o botao "voltar ao topo" aparece.
+  static const double _backToTopThreshold = 620;
+
+  String get languageCode => localeController.languageCode;
 
   @override
   void onInit() {
@@ -67,26 +71,24 @@ class PortfolioController extends GetxController {
     _load();
   }
 
+  /// Carrega o conteudo via casos de uso. Cada `await` e tipado — sem casts
+  /// posicionais — e o `finally` garante que o spinner nunca fique preso.
   Future<void> _load() async {
     isLoading.value = true;
-    final List<Object> results = await Future.wait(<Future<Object>>[
-      getProfile(const NoParams()),
-      getProjects(const NoParams()),
-      getSkillGroups(const NoParams()),
-      getServices(const NoParams()),
-      getSocialLinks(const NoParams()),
-    ]);
-    profile.value = results[0] as DeveloperProfile;
-    projects.assignAll(results[1] as List<Project>);
-    skillGroups.assignAll(results[2] as List<SkillGroup>);
-    services.assignAll(results[3] as List<ServiceOffering>);
-    socialLinks.assignAll(results[4] as List<SocialLink>);
-    isLoading.value = false;
+    try {
+      profile.value = await getProfile(const NoParams());
+      projects.assignAll(await getProjects(const NoParams()));
+      skillGroups.assignAll(await getSkillGroups(const NoParams()));
+      services.assignAll(await getServices(const NoParams()));
+      socialLinks.assignAll(await getSocialLinks(const NoParams()));
+    } finally {
+      isLoading.value = false;
+    }
   }
 
   void _onScroll() {
-    final bool show =
-        scrollController.hasClients && scrollController.offset > 620;
+    final bool show = scrollController.hasClients &&
+        scrollController.offset > _backToTopThreshold;
     if (show != showBackToTop.value) showBackToTop.value = show;
   }
 
@@ -115,15 +117,16 @@ class PortfolioController extends GetxController {
   Future<void> openSocial(SocialLink link) {
     switch (link.type) {
       case SocialType.email:
-        return launcher.openEmail(link.url, subject: 'Contato via portfólio');
+        return launcher.openEmail(link.target,
+            subject: 'contact.emailSubject'.tr);
       case SocialType.whatsapp:
         return launcher.openWhatsApp(
-          link.url,
-          message: 'Olá, Gabrielle! Vi o seu portfólio.',
+          link.target,
+          message: 'contact.whatsappMessage'.tr,
         );
       case SocialType.github:
       case SocialType.linkedin:
-        return launcher.openUrl(link.url);
+        return launcher.openUrl(link.target);
     }
   }
 
@@ -133,7 +136,7 @@ class PortfolioController extends GetxController {
     await launcher.openUrl(p.cvUrlFor(languageCode));
   }
 
-  void toggleLanguage() => _locale.toggle();
+  void toggleLanguage() => localeController.toggle();
 
   @override
   void onClose() {

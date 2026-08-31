@@ -37,8 +37,10 @@ class SectionWrapper extends StatelessWidget {
       width: double.infinity,
       color: background,
       padding: EdgeInsets.only(
-        top: topPadding ?? vGap,
-        bottom: bottomPadding ?? vGap,
+        // Metade do respiro nos dois lados: a faixa de cor alternada ja separa
+        // uma secao da outra, entao o espaco cheio so esticava a pagina.
+        top: topPadding ?? vGap / 2,
+        bottom: bottomPadding ?? vGap / 2,
       ),
       child: Center(
         child: ConstrainedBox(

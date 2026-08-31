@@ -19,6 +19,7 @@ class ProjectsSection extends StatelessWidget {
     final String lang = c.languageCode;
 
     return SectionWrapper(
+      background: AppColors.backgroundAlt,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
@@ -39,26 +40,40 @@ class ProjectsSection extends StatelessWidget {
                   : constraints.maxWidth >= 680
                       ? 2
                       : 1;
-              final double width = (constraints.maxWidth - gap * (cols - 1)) / cols;
-              return Wrap(
-                spacing: gap,
-                runSpacing: gap,
-                children: c.projects
-                    .asMap()
-                    .entries
-                    .map((MapEntry<int, Project> e) => SizedBox(
-                          width: width,
-                          child: RevealOnScroll(
-                            delay: Duration(milliseconds: 60 * (e.key % cols)),
-                            child: ProjectCard(
-                              project: e.value,
-                              languageCode: lang,
-                              onLinkTap: c.openProjectLink,
-                            ),
-                          ),
-                        ))
-                    .toList(),
-              );
+              final List<Project> items = c.projects;
+              final List<Widget> rows = <Widget>[];
+              for (int start = 0; start < items.length; start += cols) {
+                final List<Widget> cells = <Widget>[];
+                for (int col = 0; col < cols; col++) {
+                  if (col > 0) cells.add(const SizedBox(width: gap));
+                  final int index = start + col;
+                  cells.add(
+                    Expanded(
+                      child: index < items.length
+                          ? RevealOnScroll(
+                              delay: Duration(milliseconds: 60 * col),
+                              child: ProjectCard(
+                                project: items[index],
+                                languageCode: lang,
+                                onLinkTap: c.openProjectLink,
+                              ),
+                            )
+                          : const SizedBox.shrink(),
+                    ),
+                  );
+                }
+                if (rows.isNotEmpty) rows.add(const SizedBox(height: gap));
+                // IntrinsicHeight iguala a altura dos cards da mesma linha.
+                rows.add(
+                  IntrinsicHeight(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: cells,
+                    ),
+                  ),
+                );
+              }
+              return Column(children: rows);
             },
           ),
         ],

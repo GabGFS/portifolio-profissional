@@ -29,6 +29,7 @@ class AboutSection extends StatelessWidget {
     final String lang = c.languageCode;
 
     return SectionWrapper(
+      background: AppColors.backgroundAlt,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
@@ -46,7 +47,8 @@ class AboutSection extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  for (final LocalizedBio b in _bio(profile, lang)) ...<Widget>[
+                  for (final _LocalizedBio b
+                      in _bio(profile, lang)) ...<Widget>[
                     Text(
                       b.text,
                       textAlign: TextAlign.justify,
@@ -58,7 +60,8 @@ class AboutSection extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      const FaIcon(FontAwesomeIcons.locationDot, size: 14, color: AppColors.green),
+                      const FaIcon(FontAwesomeIcons.locationDot,
+                          size: 14, color: AppColors.green),
                       const SizedBox(width: 10),
                       Text(profile.location.resolve(lang), style: AppText.body),
                     ],
@@ -83,10 +86,10 @@ class AboutSection extends StatelessWidget {
     );
   }
 
-  List<LocalizedBio> _bio(DeveloperProfile p, String lang) {
-    return <LocalizedBio>[
+  List<_LocalizedBio> _bio(DeveloperProfile p, String lang) {
+    return <_LocalizedBio>[
       for (int i = 0; i < p.bio.length; i++)
-        LocalizedBio(p.bio[i].resolve(lang), i == p.bio.length - 1),
+        _LocalizedBio(p.bio[i].resolve(lang), i == p.bio.length - 1),
     ];
   }
 
@@ -117,17 +120,18 @@ class AboutSection extends StatelessWidget {
   }
 }
 
-class LocalizedBio {
+class _LocalizedBio {
   final String text;
   final bool last;
-  const LocalizedBio(this.text, this.last);
+  const _LocalizedBio(this.text, this.last);
 }
 
 class _StatCard extends StatelessWidget {
   final String value;
   final String label;
   final Color accent;
-  const _StatCard({required this.value, required this.label, required this.accent});
+  const _StatCard(
+      {required this.value, required this.label, required this.accent});
 
   @override
   Widget build(BuildContext context) {

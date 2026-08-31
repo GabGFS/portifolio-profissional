@@ -9,15 +9,18 @@ class LocaleController extends GetxController {
   static const Locale ptBR = Locale('pt', 'BR');
   static const Locale enUS = Locale('en', 'US');
 
-  final Rx<Locale> locale = ptBR.obs;
+  /// Privado de proposito: mutar o valor direto pularia [Get.updateLocale],
+  /// dessincronizando as chaves `.tr` do conteudo `LocalizedText`.
+  final Rx<Locale> _locale = ptBR.obs;
 
-  bool get isPortuguese => locale.value.languageCode == 'pt';
-  String get languageCode => locale.value.languageCode;
+  Locale get locale => _locale.value;
+  bool get isPortuguese => _locale.value.languageCode == 'pt';
+  String get languageCode => _locale.value.languageCode;
 
   void toggle() => setLocale(isPortuguese ? enUS : ptBR);
 
   void setLocale(Locale value) {
-    locale.value = value;
+    _locale.value = value;
     Get.updateLocale(value);
   }
 }

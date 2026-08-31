@@ -9,6 +9,5 @@ class GetSocialLinks implements UseCase<List<SocialLink>, NoParams> {
   const GetSocialLinks(this.repository);
 
   @override
-  Future<List<SocialLink>> call(NoParams params) =>
-      repository.getSocialLinks();
+  Future<List<SocialLink>> call(NoParams params) => repository.getSocialLinks();
 }

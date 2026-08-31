@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../core/theme/app_colors.dart';
 import '../../domain/entities/project.dart';
+import '../../domain/entities/project.dart' show ProjectLinkType;
 import '../../domain/entities/service_offering.dart';
 import '../../domain/entities/skill_group.dart';
 import '../../domain/entities/social_link.dart';
@@ -30,11 +31,48 @@ class PortfolioVisuals {
       case SocialType.github:
         return AppColors.textSecondary;
       case SocialType.linkedin:
-        return const Color(0xFF3996DB);
+        return AppColors.blue;
       case SocialType.email:
         return AppColors.red;
       case SocialType.whatsapp:
-        return const Color(0xFF25D366);
+        return AppColors.whatsapp;
+    }
+  }
+
+  /// Rotulo curto do canal de contato (nome proprio — nao passa por i18n).
+  static String socialLabel(SocialType type) {
+    switch (type) {
+      case SocialType.github:
+        return 'GitHub';
+      case SocialType.linkedin:
+        return 'LinkedIn';
+      case SocialType.email:
+        return 'E-mail';
+      case SocialType.whatsapp:
+        return 'WhatsApp';
+    }
+  }
+
+  /// Chave de traducao do rotulo de um link de projeto.
+  static String linkLabelKey(ProjectLinkType type) {
+    switch (type) {
+      case ProjectLinkType.code:
+        return 'action.code';
+      case ProjectLinkType.live:
+        return 'action.live';
+      case ProjectLinkType.appStore:
+        return 'action.appstore';
+    }
+  }
+
+  static Color serviceColor(ServiceType type) {
+    switch (type) {
+      case ServiceType.mobile:
+        return AppColors.green;
+      case ServiceType.backend:
+        return AppColors.blue;
+      case ServiceType.web:
+        return AppColors.purple;
     }
   }
 

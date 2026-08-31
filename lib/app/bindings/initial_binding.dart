@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
 
 import '../../core/localization/locale_controller.dart';
-import '../../core/utils/app_launcher.dart';
+import '../../core/ports/app_launcher.dart';
+import '../../core/utils/url_app_launcher.dart';
 import '../../features/portfolio/data/datasources/portfolio_local_data_source.dart';
 import '../../features/portfolio/data/repositories/portfolio_repository_impl.dart';
 import '../../features/portfolio/domain/repositories/portfolio_repository.dart';
@@ -19,7 +20,7 @@ import '../../features/portfolio/presentation/controllers/portfolio_controller.d
 class InitialBinding extends Bindings {
   @override
   void dependencies() {
-    // Sericos globais.
+    // Servicos globais.
     Get.put<LocaleController>(LocaleController(), permanent: true);
     Get.put<AppLauncher>(const UrlAppLauncher(), permanent: true);
 
@@ -36,6 +37,7 @@ class InitialBinding extends Bindings {
         getServices: const GetServices(repository),
         getSocialLinks: const GetSocialLinks(repository),
         launcher: Get.find<AppLauncher>(),
+        localeController: Get.find<LocaleController>(),
       ),
     );
   }

@@ -30,6 +30,13 @@ class Project {
   final String year;
   final bool featured;
 
+  /// Caminho do video de demonstracao no bundle de assets, quando existir.
+  final String? videoAsset;
+
+  /// Marca projetos cujo codigo nao e publico. O aviso aparece no card mesmo
+  /// quando ha outros links (loja, deploy), sem substitui-los.
+  final bool privateRepo;
+
   const Project({
     required this.id,
     required this.name,
@@ -40,10 +47,15 @@ class Project {
     required this.category,
     required this.year,
     this.featured = false,
+    this.videoAsset,
+    this.privateRepo = false,
   });
 
   /// Indica se o projeto possui algum link publico exibivel.
   bool get hasLinks => links.isNotEmpty;
+
+  /// Indica se o projeto tem video de demonstracao.
+  bool get hasVideo => videoAsset != null;
 
   Project copyWith({List<ProjectLink>? links}) {
     return Project(
@@ -56,6 +68,8 @@ class Project {
       category: category,
       year: year,
       featured: featured,
+      videoAsset: videoAsset,
+      privateRepo: privateRepo,
     );
   }
 }

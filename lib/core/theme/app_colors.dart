@@ -15,6 +15,10 @@ class AppColors {
 
   // Fundos
   static const Color background = gray500;
+
+  /// Faixa alternada das secoes: um degrau acima do fundo, para marcar
+  /// onde uma secao termina e a proxima comeca (padrao zebrado).
+  static const Color backgroundAlt = Color(0xFF1A1C22);
   static const Color backgroundDeep = gray600;
   static const Color surface = Color(0xFF1C1F27); // card
   static const Color surfaceHover = Color(0xFF23262E);
@@ -35,6 +39,9 @@ class AppColors {
   static const Color purple = Color(0xFFBB72E9);
   static const Color red = Color(0xFFE3646E);
   static const Color yellow = Color(0xFFEABD5F);
+
+  /// Verde oficial do WhatsApp (usado no icone de contato).
+  static const Color whatsapp = Color(0xFF25D366);
 
   // Compat: "primary" = verde (acento principal do tema)
   static const Color primary = green;

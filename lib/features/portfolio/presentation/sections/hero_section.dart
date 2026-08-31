@@ -20,8 +20,10 @@ class HeroSection extends StatelessWidget {
     final DeveloperProfile profile = c.profile.value!;
     final String lang = c.languageCode;
     final bool isMobile = Responsive.isMobile(context);
-    final double hPad = Responsive.value<double>(context, mobile: 20, tablet: 32, desktop: 24);
-    final double nameSize = Responsive.value<double>(context, mobile: 40, tablet: 52, desktop: 60);
+    final double hPad =
+        Responsive.value<double>(context, mobile: 20, tablet: 32, desktop: 24);
+    final double nameSize =
+        Responsive.value<double>(context, mobile: 40, tablet: 52, desktop: 60);
 
     return Container(
       width: double.infinity,
@@ -165,10 +167,11 @@ class _MonoIntro extends StatefulWidget {
   State<_MonoIntro> createState() => _MonoIntroState();
 }
 
-class _MonoIntroState extends State<_MonoIntro> with SingleTickerProviderStateMixin {
-  late final AnimationController _blink =
-      AnimationController(vsync: this, duration: const Duration(milliseconds: 1100))
-        ..repeat();
+class _MonoIntroState extends State<_MonoIntro>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _blink = AnimationController(
+      vsync: this, duration: const Duration(milliseconds: 1100))
+    ..repeat();
 
   @override
   void dispose() {

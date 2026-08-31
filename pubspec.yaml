@@ -28,6 +28,9 @@ dependencies:
   # Logos de marca das tecnologias (Simple Icons em SVG).
   flutter_svg: ^2.0.10
 
+  # Player dos videos de demonstracao dos projetos.
+  video_player: ^2.9.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -40,6 +43,7 @@ flutter:
     - assets/images/
     - assets/cv/
     - assets/icons/
+    - assets/videos/
 
   fonts:
     - family: Asap

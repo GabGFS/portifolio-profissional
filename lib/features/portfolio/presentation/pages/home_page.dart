@@ -49,7 +49,8 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            Positioned(right: 22, bottom: 22, child: _BackToTopFab(controller: c)),
+            Positioned(
+                right: 22, bottom: 22, child: _BackToTopFab(controller: c)),
           ],
         );
       }),
@@ -63,36 +64,41 @@ class _ScrollContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    // Publica a rolagem da pagina para os widgets descendentes (RevealOnScroll
+    // consome via PrimaryScrollController, sem depender deste controller).
+    return PrimaryScrollController(
       controller: controller.scrollController,
-      child: Column(
-        children: <Widget>[
-          KeyedSubtree(
-            key: controller.sectionKeys[PortfolioSection.home],
-            child: const HeroSection(),
-          ),
-          KeyedSubtree(
-            key: controller.sectionKeys[PortfolioSection.about],
-            child: const AboutSection(),
-          ),
-          KeyedSubtree(
-            key: controller.sectionKeys[PortfolioSection.skills],
-            child: const SkillsSection(),
-          ),
-          KeyedSubtree(
-            key: controller.sectionKeys[PortfolioSection.projects],
-            child: const ProjectsSection(),
-          ),
-          KeyedSubtree(
-            key: controller.sectionKeys[PortfolioSection.services],
-            child: const ServicesSection(),
-          ),
-          KeyedSubtree(
-            key: controller.sectionKeys[PortfolioSection.contact],
-            child: const ContactSection(),
-          ),
-          const FooterSection(),
-        ],
+      child: SingleChildScrollView(
+        controller: controller.scrollController,
+        child: Column(
+          children: <Widget>[
+            KeyedSubtree(
+              key: controller.sectionKeys[PortfolioSection.home],
+              child: const HeroSection(),
+            ),
+            KeyedSubtree(
+              key: controller.sectionKeys[PortfolioSection.about],
+              child: const AboutSection(),
+            ),
+            KeyedSubtree(
+              key: controller.sectionKeys[PortfolioSection.skills],
+              child: const SkillsSection(),
+            ),
+            KeyedSubtree(
+              key: controller.sectionKeys[PortfolioSection.projects],
+              child: const ProjectsSection(),
+            ),
+            KeyedSubtree(
+              key: controller.sectionKeys[PortfolioSection.services],
+              child: const ServicesSection(),
+            ),
+            KeyedSubtree(
+              key: controller.sectionKeys[PortfolioSection.contact],
+              child: const ContactSection(),
+            ),
+            const FooterSection(),
+          ],
+        ),
       ),
     );
   }
@@ -179,7 +185,8 @@ class _NavDrawer extends StatelessWidget {
                   ),
                   const SizedBox(width: 12),
                   Text(AppConstants.displayName,
-                      style: AppText.label.copyWith(fontWeight: FontWeight.w600)),
+                      style:
+                          AppText.label.copyWith(fontWeight: FontWeight.w600)),
                   const Spacer(),
                   IconButton(
                     onPressed: () => Navigator.of(context).pop(),
@@ -227,7 +234,8 @@ class _DrawerItem extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 8),
         child: Text(
           labelKey.tr,
-          style: AppText.h3.copyWith(fontSize: 18, color: AppColors.textPrimary),
+          style:
+              AppText.h3.copyWith(fontSize: 18, color: AppColors.textPrimary),
         ),
       ),
     );
