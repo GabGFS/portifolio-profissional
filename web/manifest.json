@@ -5,8 +5,7 @@
   "display": "standalone",
   "background_color": "#16181D",
   "theme_color": "#16181D",
-  "description": "Portfolio de Gabrielle Soratto — Mobile & Backend Developer.",
-  "orientation": "portrait-primary",
+  "description": "Portfolio de Gabrielle Soratto — Mobile + Backend Developer.",
   "prefer_related_applications": false,
   "icons": [
     { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },

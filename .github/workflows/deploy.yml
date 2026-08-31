@@ -1,0 +1,59 @@
+name: Deploy no GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Permissoes exigidas pelo deploy oficial do Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Um deploy por vez; pushes seguidos cancelam o anterior ainda em fila.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          # Mesma versao fixada no .fvmrc — o CI compila com o SDK do dev.
+          flutter-version: 3.38.7
+          channel: stable
+          cache: true
+
+      - run: flutter pub get
+
+      - name: Analise estatica
+        run: flutter analyze
+
+      - name: Testes
+        run: flutter test
+
+      # base-href precisa apontar para a subpasta do Pages, senao a pagina
+      # sobe em branco por nao achar main.dart.js nem os assets.
+      - name: Build web
+        run: flutter build web --release --base-href /portifolio-profissional/
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/web
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
